@@ -1,0 +1,577 @@
+# Tested on Deeptest release 1.10.0
+cbmcArguments:
+  cover-function-only: false
+  depth: false
+  do-not-test-methods-with-access: [ private ]
+  java-generate-no-comments: true
+  no-trivial-tests: true
+phases:
+-
+  timeout: 300
+  cbmcArguments:
+    java-assume-inputs-non-null: true
+    max-nondet-array-length: 10
+    string-non-empty: true
+    unwind: 1
+-
+  timeout: 300
+  cbmcArguments:
+    max-nondet-array-length: 20
+    unwind: 2
+-
+  timeout: 300
+  cbmcArguments:
+    max-nondet-array-length: 30
+    max-nondet-string-length: 10
+    unwind: 3
+units:
+  - target:
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/nonbulk/flatfile/importer/AbstractLocalImporter.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/nonbulk/flatfile/importer/AbstractLocalImporter.java
+    # Child of AbstractLocalImporter.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/utils/file/ReaderSpliterator.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/utils/file/ReaderSpliterator.java
+    # Child of AbstractLocalImporter.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/extractor/ExtractorHandler.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/extractor/ExtractorHandler.java
+    # Child of AbstractLocalImporter.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/extractor/inputformat/WholeFileFormat.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/extractor/inputformat/WholeFileFormat.java
+    # Child of AbstractLocalImporter.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/utils/cli/CLIOptions.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/utils/cli/CLIOptions.java
+    # Child of AbstractLocalImporter.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/nonbulk/flatfile/LoadOptions.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/nonbulk/flatfile/LoadOptions.java
+    # Child of AbstractLocalImporter.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/nonbulk/flatfile/location/Location.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/nonbulk/flatfile/location/Location.java
+    # Child of AbstractLocalImporter.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/nonbulk/flatfile/location/LocationStrategy.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/nonbulk/flatfile/location/LocationStrategy.java
+    # Child of AbstractLocalImporter.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/nonbulk/flatfile/writer/InvalidWriterOutput.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/nonbulk/flatfile/writer/InvalidWriterOutput.java
+  - target:
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/adapters/maxmind/geo/hash/DistanceStrategies.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/adapters/maxmind/geo/hash/DistanceStrategies.java
+  - target:
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/bolt/ConfiguredBolt.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/bolt/ConfiguredBolt.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/Constants.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/Constants.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/configuration/ConfigurationType.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/configuration/ConfigurationType.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/configuration/Configurations.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/configuration/Configurations.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/configuration/ConfigurationsUtils.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/configuration/ConfigurationsUtils.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/configuration/writer/ConfigurationStrategy.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/configuration/writer/ConfigurationStrategy.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/configuration/writer/ConfigurationsStrategies.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/configuration/writer/ConfigurationsStrategies.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-zookeeper/target/classes
+      file: org/apache/metron/zookeeper/SimpleEventListener.class
+      sourceDir: metron-platform/metron-zookeeper/src/main/java
+      sourceFile: org/apache/metron/zookeeper/SimpleEventListener.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/zookeeper/configurations/ConfigurationsUpdater.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/zookeeper/configurations/ConfigurationsUpdater.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/zookeeper/configurations/Reloadable.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/zookeeper/configurations/Reloadable.java
+    # Child of ConfiguredBolt.class
+    - dir: metron-platform/metron-zookeeper/target/classes
+      file: org/apache/metron/zookeeper/ZKCache.class
+      sourceDir: metron-platform/metron-zookeeper/src/main/java
+      sourceFile: org/apache/metron/zookeeper/ZKCache.java
+  - target:
+    - dir: metron-platform/metron-parsing/metron-parsing-storm/target/classes
+      file: org/apache/metron/parsers/topology/ParserTopologyBuilder.class
+      sourceDir: metron-platform/metron-parsing/metron-parsing-storm/src/main/java
+      sourceFile: org/apache/metron/parsers/topology/ParserTopologyBuilder.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/configuration/ParserConfigurations.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/configuration/ParserConfigurations.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/configuration/SensorParserConfig.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/configuration/SensorParserConfig.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/configuration/writer/ParserWriterConfiguration.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/configuration/writer/ParserWriterConfiguration.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/utils/KafkaUtils.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/utils/KafkaUtils.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/utils/ReflectionUtils.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/utils/ReflectionUtils.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/writer/BulkMessageWriter.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/writer/BulkMessageWriter.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/writer/MessageWriter.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/writer/MessageWriter.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-parsing/metron-parsers-common/target/classes
+      file: org/apache/metron/parsers/ParserRunnerImpl.class
+      sourceDir: metron-platform/metron-parsing/metron-parsers-common/src/main/java
+      sourceFile: org/apache/metron/parsers/ParserRunnerImpl.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-parsing/metron-parsing-storm/target/classes
+      file: org/apache/metron/parsers/bolt/ParserBolt.class
+      sourceDir: metron-platform/metron-parsing/metron-parsing-storm/src/main/java
+      sourceFile: org/apache/metron/parsers/bolt/ParserBolt.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-parsing/metron-parsing-storm/target/classes
+      file: org/apache/metron/parsers/bolt/WriterBolt.class
+      sourceDir: metron-platform/metron-parsing/metron-parsing-storm/src/main/java
+      sourceFile: org/apache/metron/parsers/bolt/WriterBolt.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-parsing/metron-parsing-storm/target/classes
+      file: org/apache/metron/parsers/bolt/WriterHandler.class
+      sourceDir: metron-platform/metron-parsing/metron-parsing-storm/src/main/java
+      sourceFile: org/apache/metron/parsers/bolt/WriterHandler.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-parsing/metron-parsing-storm/target/classes
+      file: org/apache/metron/parsers/topology/config/ValueSupplier.class
+      sourceDir: metron-platform/metron-parsing/metron-parsing-storm/src/main/java
+      sourceFile: org/apache/metron/parsers/topology/config/ValueSupplier.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-storm-kafka/target/classes
+      file: org/apache/metron/storm/kafka/flux/SimpleStormKafkaBuilder.class
+      sourceDir: metron-platform/metron-storm-kafka/src/main/java
+      sourceFile: org/apache/metron/storm/kafka/flux/SimpleStormKafkaBuilder.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-storm-kafka/target/classes
+      file: org/apache/metron/storm/kafka/flux/SpoutConfiguration.class
+      sourceDir: metron-platform/metron-storm-kafka/src/main/java
+      sourceFile: org/apache/metron/storm/kafka/flux/SpoutConfiguration.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-storm-kafka/target/classes
+      file: org/apache/metron/storm/kafka/flux/StormKafkaSpout.class
+      sourceDir: metron-platform/metron-storm-kafka/src/main/java
+      sourceFile: org/apache/metron/storm/kafka/flux/StormKafkaSpout.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-writer/target/classes
+      file: org/apache/metron/writer/AbstractWriter.class
+      sourceDir: metron-platform/metron-writer/src/main/java
+      sourceFile: org/apache/metron/writer/AbstractWriter.java
+    # Child of ParserTopologyBuilder.class
+    - dir: metron-platform/metron-writer/target/classes
+      file: org/apache/metron/writer/kafka/KafkaWriter.class
+      sourceDir: metron-platform/metron-writer/src/main/java
+      sourceFile: org/apache/metron/writer/kafka/KafkaWriter.java
+  - target:
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/adapters/simplehbase/SimpleHBaseAdapter.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/adapters/simplehbase/SimpleHBaseAdapter.java
+    # Child of SimpleHBaseAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/bolt/CacheKey.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/bolt/CacheKey.java
+    # Child of SimpleHBaseAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/converter/EnrichmentKey.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/converter/EnrichmentKey.java
+    # Child of SimpleHBaseAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/converter/EnrichmentValue.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/converter/EnrichmentValue.java
+    # Child of SimpleHBaseAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/interfaces/EnrichmentAdapter.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/interfaces/EnrichmentAdapter.java
+    # Child of SimpleHBaseAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/lookup/EnrichmentLookup.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/lookup/EnrichmentLookup.java
+    # Child of SimpleHBaseAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/lookup/LookupKV.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/lookup/LookupKV.java
+    # Child of SimpleHBaseAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/lookup/accesstracker/NoopAccessTracker.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/lookup/accesstracker/NoopAccessTracker.java
+    # Child of SimpleHBaseAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/utils/EnrichmentUtils.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/utils/EnrichmentUtils.java
+  - target:
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/extractor/stix/StixExtractor.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/extractor/stix/StixExtractor.java
+    # Child of StixExtractor.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/extractor/Extractor.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/extractor/Extractor.java
+    # Child of StixExtractor.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/extractor/stix/types/ObjectTypeHandler.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/extractor/stix/types/ObjectTypeHandler.java
+    # Child of StixExtractor.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/extractor/stix/types/ObjectTypeHandlers.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/extractor/stix/types/ObjectTypeHandlers.java
+  - target:
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/adapters/threatintel/ThreatIntelAdapter.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/adapters/threatintel/ThreatIntelAdapter.java
+    # Child of ThreatIntelAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/lookup/accesstracker/BloomAccessTracker.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/lookup/accesstracker/BloomAccessTracker.java
+    # Child of ThreatIntelAdapter.class
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/lookup/accesstracker/PersistentAccessTracker.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/lookup/accesstracker/PersistentAccessTracker.java
+  - target:
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/field/transformation/StellarTransformation.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/field/transformation/StellarTransformation.java
+    # Child of StellarTransformation.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/common/CachingStellarProcessor.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/common/CachingStellarProcessor.java
+    # Child of StellarTransformation.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/dsl/Context.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/dsl/Context.java
+    # Child of StellarTransformation.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/dsl/MapVariableResolver.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/dsl/MapVariableResolver.java
+    # Child of StellarTransformation.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/dsl/StellarFunctions.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/dsl/StellarFunctions.java
+    # Child of StellarTransformation.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/dsl/VariableResolver.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/dsl/VariableResolver.java
+    # Child of StellarTransformation.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/common/StellarProcessor.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/common/StellarProcessor.java
+  - target:
+    - dir: metron-analytics/metron-profiler-client/target/classes
+      file: org/apache/metron/profiler/client/ProfilerClient.class
+      sourceDir: metron-analytics/metron-profiler-client/src/main/java
+      sourceFile: org/apache/metron/profiler/client/ProfilerClient.java
+    # Child of ProfilerClient.class
+    - dir: metron-analytics/metron-profiler-common/target/classes
+      file: org/apache/metron/profiler/ProfileMeasurement.class
+      sourceDir: metron-analytics/metron-profiler-common/src/main/java
+      sourceFile: org/apache/metron/profiler/ProfileMeasurement.java
+    # Child of ProfilerClient.class
+    - dir: metron-analytics/metron-profiler-common/target/classes
+      file: org/apache/metron/profiler/ProfilePeriod.class
+      sourceDir: metron-analytics/metron-profiler-common/src/main/java
+      sourceFile: org/apache/metron/profiler/ProfilePeriod.java
+  - target:
+    - dir: metron-analytics/metron-maas-service/target/classes
+      file: org/apache/metron/maas/service/runner/Runner.class
+      sourceDir: metron-analytics/metron-maas-service/src/main/java
+      sourceFile: org/apache/metron/maas/service/runner/Runner.java
+    # Child of Runner.class
+    - dir: metron-analytics/metron-maas-common/target/classes
+      file: org/apache/metron/maas/config/Endpoint.class
+      sourceDir: metron-analytics/metron-maas-common/src/main/java
+      sourceFile: org/apache/metron/maas/config/Endpoint.java
+    # Child of Runner.class
+    - dir: metron-analytics/metron-maas-service/target/classes
+      file: org/apache/metron/maas/service/Constants.class
+      sourceDir: metron-analytics/metron-maas-service/src/main/java
+      sourceFile: org/apache/metron/maas/service/Constants.java
+    # Child of Runner.class
+    - dir: metron-analytics/metron-maas-common/target/classes
+      file: org/apache/metron/maas/util/ConfigUtil.class
+      sourceDir: metron-analytics/metron-maas-common/src/main/java
+      sourceFile: org/apache/metron/maas/util/ConfigUtil.java
+    # Child of Runner.class
+    - dir: metron-analytics/metron-maas-common/target/classes
+      file: org/apache/metron/maas/config/MaaSConfig.class
+      sourceDir: metron-analytics/metron-maas-common/src/main/java
+      sourceFile: org/apache/metron/maas/config/MaaSConfig.java
+    # Child of Runner.class
+    - dir: metron-analytics/metron-maas-common/target/classes
+      file: org/apache/metron/maas/config/ModelEndpoint.class
+      sourceDir: metron-analytics/metron-maas-common/src/main/java
+      sourceFile: org/apache/metron/maas/config/ModelEndpoint.java
+  - target:
+    - dir: metron-platform/metron-storm-kafka/target/classes
+      file: org/apache/storm/kafka/CallbackCollector.class
+      sourceDir: metron-platform/metron-storm-kafka/src/main/java
+      sourceFile: org/apache/storm/kafka/CallbackCollector.java
+  - target:
+    - dir: metron-analytics/metron-profiler-client/target/classes
+      file: org/apache/metron/profiler/client/stellar/WindowLookback.class
+      sourceDir: metron-analytics/metron-profiler-client/src/main/java
+      sourceFile: org/apache/metron/profiler/client/stellar/WindowLookback.java
+    # Child of WindowLookback.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/dsl/ParseException.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/dsl/ParseException.java
+    # Child of WindowLookback.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/dsl/Stellar.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/dsl/Stellar.java
+    # Child of WindowLookback.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/dsl/StellarFunction.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/dsl/StellarFunction.java
+    # Child of WindowLookback.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/common/utils/ConversionUtils.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/common/utils/ConversionUtils.java
+    # Child of WindowLookback.class
+    - dir: metron-analytics/metron-profiler-client/target/classes
+      file: org/apache/metron/profiler/client/window/Window.class
+      sourceDir: metron-analytics/metron-profiler-client/src/main/java
+      sourceFile: org/apache/metron/profiler/client/window/Window.java
+    # Child of WindowLookback.class
+    - dir: metron-analytics/metron-profiler-client/target/classes
+      file: org/apache/metron/profiler/client/window/WindowProcessor.class
+      sourceDir: metron-analytics/metron-profiler-client/src/main/java
+      sourceFile: org/apache/metron/profiler/client/window/WindowProcessor.java
+  - target:
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/load/LoadGenerator.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/load/LoadGenerator.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/load/monitor/AbstractMonitor.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/load/monitor/AbstractMonitor.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/load/monitor/EPSGeneratedMonitor.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/load/monitor/EPSGeneratedMonitor.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/load/monitor/EPSThroughputWrittenMonitor.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/load/monitor/EPSThroughputWrittenMonitor.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/load/monitor/MonitorTask.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/load/monitor/MonitorTask.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/load/monitor/writers/CSVWriter.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/load/monitor/writers/CSVWriter.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/load/monitor/writers/ConsoleWriter.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/load/monitor/writers/ConsoleWriter.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/load/monitor/writers/Writable.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/load/monitor/writers/Writable.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/load/monitor/writers/Writer.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/load/monitor/writers/Writer.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/sampler/BiasedSampler.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/sampler/BiasedSampler.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/sampler/Sampler.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/sampler/Sampler.java
+    # Child of LoadGenerator.class
+    - dir: metron-contrib/metron-performance/target/classes
+      file: org/apache/metron/performance/sampler/UnbiasedSampler.class
+      sourceDir: metron-contrib/metron-performance/src/main/java
+      sourceFile: org/apache/metron/performance/sampler/UnbiasedSampler.java
+  - target:
+    - dir: metron-platform/metron-parsing/metron-parsing-storm/target/classes
+      file: org/apache/metron/parsers/topology/ParserTopologyCLI.class
+      sourceDir: metron-platform/metron-parsing/metron-parsing-storm/src/main/java
+      sourceFile: org/apache/metron/parsers/topology/ParserTopologyCLI.java
+    # Child of ParserTopologyCLI.class
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/utils/JSONUtils.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/utils/JSONUtils.java
+    # Child of ParserTopologyCLI.class
+    - dir: metron-platform/metron-parsing/metron-parsing-storm/target/classes
+      file: org/apache/metron/parsers/topology/config/Arg.class
+      sourceDir: metron-platform/metron-parsing/metron-parsing-storm/src/main/java
+      sourceFile: org/apache/metron/parsers/topology/config/Arg.java
+    # Child of ParserTopologyCLI.class
+    - dir: metron-platform/metron-parsing/metron-parsing-storm/target/classes
+      file: org/apache/metron/parsers/topology/config/ConfigHandlers.class
+      sourceDir: metron-platform/metron-parsing/metron-parsing-storm/src/main/java
+      sourceFile: org/apache/metron/parsers/topology/config/ConfigHandlers.java
+  - target:
+    - dir: metron-platform/metron-enrichment/target/classes
+      file: org/apache/metron/enrichment/lookup/accesstracker/PersistentBloomTrackerCreator.class
+      sourceDir: metron-platform/metron-enrichment/src/main/java
+      sourceFile: org/apache/metron/enrichment/lookup/accesstracker/PersistentBloomTrackerCreator.java
+    # Child of PersistentBloomTrackerCreator.class
+    - dir: metron-platform/metron-hbase/target/classes
+      file: org/apache/metron/hbase/TableProvider.class
+      sourceDir: metron-platform/metron-hbase/src/main/java
+      sourceFile: org/apache/metron/hbase/TableProvider.java
+  - target:
+    - dir: metron-platform/metron-integration-test/target/classes
+      file: org/apache/metron/integration/components/YarnComponent.class
+      sourceDir: metron-platform/metron-integration-test/src/main/java
+      sourceFile: org/apache/metron/integration/components/YarnComponent.java
+    # Child of YarnComponent.class
+    - dir: metron-platform/metron-integration-test/target/classes
+      file: org/apache/metron/integration/InMemoryComponent.class
+      sourceDir: metron-platform/metron-integration-test/src/main/java
+      sourceFile: org/apache/metron/integration/InMemoryComponent.java
+    # Child of YarnComponent.class
+    - dir: metron-platform/metron-integration-test/target/classes
+      file: org/apache/metron/integration/UnableToStartException.class
+      sourceDir: metron-platform/metron-integration-test/src/main/java
+      sourceFile: org/apache/metron/integration/UnableToStartException.java
+  - target:
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/bulk/LeastRecentlyUsedPruner.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/bulk/LeastRecentlyUsedPruner.java
+    # Child of LeastRecentlyUsedPruner.class
+    - dir: metron-platform/metron-data-management/target/classes
+      file: org/apache/metron/dataloads/hbase/mr/PrunerMapper.class
+      sourceDir: metron-platform/metron-data-management/src/main/java
+      sourceFile: org/apache/metron/dataloads/hbase/mr/PrunerMapper.java
+  - target:
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/common/LambdaExpression.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/common/LambdaExpression.java
+    # Child of LambdaExpression.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/dsl/DefaultVariableResolver.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/dsl/DefaultVariableResolver.java
+    # Child of LambdaExpression.class
+    - dir: metron-stellar/stellar-common/target/classes
+      file: org/apache/metron/stellar/dsl/Token.class
+      sourceDir: metron-stellar/stellar-common/src/main/java
+      sourceFile: org/apache/metron/stellar/dsl/Token.java
+  - target:
+    - dir: metron-platform/metron-pcap-backend/target/classes
+      file: org/apache/metron/spout/pcap/HDFSWriterCallback.class
+      sourceDir: metron-platform/metron-pcap-backend/src/main/java
+      sourceFile: org/apache/metron/spout/pcap/HDFSWriterCallback.java
+    # Child of HDFSWriterCallback.class
+    - dir: metron-platform/metron-pcap-backend/target/classes
+      file: org/apache/metron/spout/pcap/deserializer/KeyValueDeserializer.class
+      sourceDir: metron-platform/metron-pcap-backend/src/main/java
+      sourceFile: org/apache/metron/spout/pcap/deserializer/KeyValueDeserializer.java
+    # Child of HDFSWriterCallback.class
+    - dir: metron-platform/metron-storm-kafka/target/classes
+      file: org/apache/storm/kafka/Callback.class
+      sourceDir: metron-platform/metron-storm-kafka/src/main/java
+      sourceFile: org/apache/storm/kafka/Callback.java
+    # Child of HDFSWriterCallback.class
+    - dir: metron-platform/metron-storm-kafka/target/classes
+      file: org/apache/storm/kafka/EmitContext.class
+      sourceDir: metron-platform/metron-storm-kafka/src/main/java
+      sourceFile: org/apache/storm/kafka/EmitContext.java
+  - target:
+    - dir: metron-platform/metron-common/target/classes
+      file: org/apache/metron/common/field/transformation/SimpleFieldTransformation.class
+      sourceDir: metron-platform/metron-common/src/main/java
+      sourceFile: org/apache/metron/common/field/transformation/SimpleFieldTransformation.java
